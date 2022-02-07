@@ -1,7 +1,7 @@
 # SWAPLINGS FULLSTACK APP
 
 ## CLIENT
-Nextjs React Typescript app server
+Nextjs React Typescript app
 
 ## API
-Fastify Nelix Graphql server with connection to PostgreSQL database via Objectionjs
+Fastify Helix Graphql server with connection to PostgreSQL database via Objectionjs
