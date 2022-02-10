@@ -3,6 +3,7 @@ on:
   push:
     branches: 
       - main
+      
 jobs:
   deploy_client_to_vercel:
     runs-on: ubuntu-latest
