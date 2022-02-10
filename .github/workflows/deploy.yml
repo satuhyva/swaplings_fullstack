@@ -2,7 +2,7 @@ name: Deploy Swaplings app
 on:
   push:
     branches: 
-      - master
+      - main
 jobs:
   deploy_client_to_vercel:
     runs-on: ubuntu-latest
