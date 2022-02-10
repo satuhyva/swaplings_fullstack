@@ -15,4 +15,3 @@ const HomePage: NextPage = () => {
 
 export default HomePage
 
-// https://www.eliostruyf.com/deploy-site-vercel-github-actions-releases/
