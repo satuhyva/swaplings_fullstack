@@ -57,10 +57,14 @@ jobs:
           node-version: '14'
       
       - name: Install node modules
-        run: npm install
+        run: |
+          cd server
+          npm install
 
       - name: Build tsc
-        run: tsc
+        run: |
+          cd server
+          tsc
 
       - name: Deploy to Heroku production
         uses: onekiloparsec/heroku-node-deploy-subfolder@v1.1.0
