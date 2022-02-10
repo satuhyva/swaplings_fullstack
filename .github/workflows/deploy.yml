@@ -61,10 +61,10 @@ jobs:
           cd server
           npm install
 
-      - name: Build tsc
+      - name: Build
         run: |
           cd server
-          tsc
+          npm run tsc
 
       - name: Deploy to Heroku production
         uses: onekiloparsec/heroku-node-deploy-subfolder@v1.1.0
