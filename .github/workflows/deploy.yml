@@ -4,7 +4,7 @@ on:
     branches: 
       - master
 jobs:
-  vercel:
+  deploy_client_to_vercel:
     runs-on: ubuntu-latest
     steps:
 
@@ -34,4 +34,15 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-args: '--prod'
           scope: ${{ secrets.VERCEL_ORG_ID }}
-      
+
+  deploy_server_to_heroku:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    
+    steps:
+
+      - name: Say HUHUU!
+        run: |
+          echo "HUHUU!"
