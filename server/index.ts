@@ -1,8 +1,11 @@
 import Fastify from 'fastify'
+import fastifyCors from 'fastify-cors'
 
 const fastify = Fastify({
   logger: true
 })
+
+fastify.register(fastifyCors)
 
 
 fastify.get('/ping', async (request, reply) => {

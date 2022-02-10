@@ -46,6 +46,23 @@ jobs:
     
     steps:
 
-      - name: Say HUHUU!
-        run: |
-          echo "HUHUU!"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      
+      - name: Install node modules
+        run: npm install
+
+      - name: Build tsc
+        run: tsc
+
+      - name: Deploy to Heroku production
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with: 
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
