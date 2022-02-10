@@ -6,6 +6,9 @@ on:
 jobs:
   deploy_client_to_vercel:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: client
     steps:
 
       - name: Checkout code
