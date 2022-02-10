@@ -1,0 +1,11 @@
+name: Deploy Swaplings app 
+on:
+  push:
+    branches: 
+      - master
+jobs:
+  vercel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
