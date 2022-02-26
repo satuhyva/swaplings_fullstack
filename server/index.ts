@@ -19,34 +19,39 @@ fastify.get('/ping', async (_request, reply) => {
 })
 
 fastify.get('/test-db-connection', async (_request, reply) => {
-  if (process.env.NODE_ENV !== 'production') {
-    const nonExistingPersons = await Person.query().whereNotNull('id')
-    console.log(nonExistingPersons)
-    reply.send(nonExistingPersons)
+  // if (process.env.NODE_ENV !== 'production') {
+    try {
+      const nonExistingPersons = await Person.query().whereNotNull('id')
+      console.log(nonExistingPersons)
+      reply.send(nonExistingPersons)
+    } catch (error) {
+      console.log(error)
+    }
+
     // Kun tyhjä, palauttaa [], mutta ylipäätän kun toimii, ei tule erroria, vaan palauttaa jotain
-  }
-  reply.send('Not available in production mode')
+  // }
+  // reply.send('Not available in production mode')
 })
 
-// fastify.get('/test-database-functionality', async (_request, reply) => {
-//   const uniqueStamp = new Date().toISOString()
-//   const randomString = '' + Math.floor((Math.random() * 10)) + Math.floor((Math.random() * 10)) + Math.floor((Math.random() * 10))
-//   try {  
-//      const person = await Person.createPerson({
-//       id: `0002f980-9${randomString}-11e9-a7c8-79c148412f79`,
-//       username: 'test person' + uniqueStamp,
-//       passwordhash: 'hash',
-//       email: 'emailemail',
-//       role: Role.GUEST,
-//       deleted: false
-//     })
-//     const allPersons = await Person.getAllTesting()
-//     reply.send({  person, allPersons })  
-//   } catch (error) {
-//     console.log(error)
-//     reply.send(error)
-//   }
-// })
+fastify.get('/test-database-functionality', async (_request, reply) => {
+  const uniqueStamp = new Date().toISOString()
+  const randomString = '' + Math.floor((Math.random() * 10)) + Math.floor((Math.random() * 10)) + Math.floor((Math.random() * 10))
+  try {  
+     const person = await Person.createPerson({
+      id: `0002f980-9${randomString}-11e9-a7c8-79c148412f79`,
+      username: 'test person' + uniqueStamp,
+      passwordhash: 'hash',
+      email: 'emailemail',
+      role: Role.GUEST,
+      deleted: false
+    })
+    const allPersons = await Person.getAllTesting()
+    reply.send({  person, allPersons })  
+  } catch (error) {
+    console.log(error)
+    reply.send(error)
+  }
+})
 
 const start = async () => {
   console.log('NODE_ENV', process.env.NODE_ENV)
@@ -58,7 +63,7 @@ const start = async () => {
         console.log('Server is starting on PORT: ', process.env.PORT || 3001)
       })
   } catch (err) {
-    console.log('Error starting my server!!!')
+    console.log('Error starting server!!!')
     console.log(err)
     fastify.log.error(err)
     process.exit(1)
