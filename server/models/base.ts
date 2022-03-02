@@ -41,7 +41,7 @@ class CustomValidator extends Validator {
         console.log('Custom validating!!!')
     
         // You need to return the (possibly modified) json.
-        return json;
+        return json
       }
 }
 
@@ -52,7 +52,7 @@ export class Base extends Model {
     //     return new CustomValidator()
     // }
 
-    QueryBuilderType!: CustomQueryBuilder<this, this[]>;
-    static QueryBuilder = CustomQueryBuilder
+    // QueryBuilderType!: CustomQueryBuilder<this, this[]>;
+    // static QueryBuilder = CustomQueryBuilder
     
 }

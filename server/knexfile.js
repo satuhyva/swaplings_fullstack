@@ -29,7 +29,7 @@ const data = {
   debug: false,
   pool: { min: 2, max: 5 },
 }
-console.log('***************')
+
 
 // These keys must match the possible NODE_ENV values!
 module.exports = {

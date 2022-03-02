@@ -9,6 +9,8 @@ export const connectionData = process.env.DATABASE_URL ?
             ? 'postgres' 
             : process.env.NODE_ENV === 'development' ?
             'localhost' 
+            : process.env.NODE_ENV === 'development_test' ?
+            'localhost' 
             : process.env.NODE_ENV === 'manual_migrations' ?
             process.env.POSTGRES_HOST
             : 'ERROR!', 

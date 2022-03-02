@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+// // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+// /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { knex, Knex } from 'knex'
 import { Model } from 'objection'
 import { connectionData } from './connectionData'
@@ -35,11 +36,22 @@ export class Database {
 
 
     connect(config = Database.DB_CONFIG) {
-        console.log('Starting to connect to database...')
+        if (process.env.NODE_ENV !== 'development_test') {
+            console.log('Starting to connect to database...')
+        }
         this.config = config
         this.knexInstance = knex(this.config)
         Model.knex(this.knexInstance)
     }
+
+    async disconnect() {
+        if (process.env.NODE_ENV !== 'development_test') {
+            console.log('Disconnecting with database...')
+        }
+        await this.knexInstance.destroy()
+        this.knexInstance = null
+        Model.knex(null)
+      }
 
 }
 
