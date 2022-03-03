@@ -36,13 +36,12 @@ describe('DATABASE CONNECTION (SOME SIMPLE DIRECT QUERIES, NO API OR GRAPHQL INV
   })
 
   it('Person can be created', async () => {
-    const id = uuidv4()
     const person = await Person.createPerson({
       ...TEST_PERSON
     })
     const personsInDatabase = await Person.query()
     expect(personsInDatabase.length).to.equal(1)
-    expect(person.id).to.equal(id)
+    expect(person.id).to.equal(TEST_PERSON_ID)
     expect(person.deleted).to.equal(null)
   })
 
