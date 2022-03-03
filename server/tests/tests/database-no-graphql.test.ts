@@ -42,7 +42,7 @@ describe('DATABASE CONNECTION (SOME SIMPLE DIRECT QUERIES, NO API OR GRAPHQL INV
     const personsInDatabase = await Person.query()
     expect(personsInDatabase.length).to.equal(1)
     expect(person.id).to.equal(TEST_PERSON_ID)
-    expect(person.deleted).to.equal(null)
+    expect(person.deleted).to.equal(false)
   })
 
   after(async () => {
