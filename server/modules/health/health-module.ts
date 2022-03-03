@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import { gql } from 'graphql-tag'
 
-const moduleName = 'Query'
+const moduleName = 'Health'
 const pathToFile = path.join(__dirname, `${moduleName.toLowerCase()}-schema.graphql`)
 const typeDefsData = fs.readFileSync(pathToFile)
 const typeDefs = gql(typeDefsData.toString())
