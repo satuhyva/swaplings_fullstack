@@ -21,6 +21,7 @@ export default class Server {
     }
 
 
+// https://paulintrognon.fr/blog/typescript-prettier-eslint-next-js
 
     public async start() {
         this.serverState = 'STARTING'

@@ -16,7 +16,7 @@ exports.up = async function(knex) {
         "role" ROLE,
         "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
         "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-        "deleted" BOOLEAN
+        "deleted" BOOLEAN DEFAULT false
       );
     `) 
     

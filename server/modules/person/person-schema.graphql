@@ -1,0 +1,48 @@
+enum Role {
+    ADMIN
+    USER 
+    GUEST
+}
+
+
+
+
+input CreatePersonInput {
+    username: String!
+    password: String!
+    email: String!
+}
+
+input UpdatePersonInput {
+    username: String
+    password: String
+    email: String
+}
+
+input LoginInput {
+    username: String!
+    password: String!
+}
+
+type Person {
+    id: ID!
+    username: String!
+    email: String!
+    role: String!
+    deleted: Boolean! 
+}
+
+
+
+extend type Query {
+    person(id: ID!): Person     
+}
+
+
+
+extend type Mutation {
+    createPerson(input: CreatePersonInput!): Person! 
+    updatePerson(id: ID!, input: UpdatePersonInput!): Person!       
+    deletePerson(id: ID!): ID! @auth(requires: [USER, ADMIN])
+    loginPerson(input: LoginInput!): String
+}

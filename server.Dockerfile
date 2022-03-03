@@ -7,7 +7,7 @@ COPY server/tsconfig.json ./
 
 COPY server/ ./
 RUN npm install
-
+RUN npm run lint
 
 EXPOSE 3001
 
